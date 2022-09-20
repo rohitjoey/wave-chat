@@ -7,7 +7,7 @@ export default function Routes() {
   return (
     <Switch>
         {/*<Route path="/" element={<Home />}/>*/}
-        {/*<Route path="chat/:userId" element={<Chat />}/>*/}
+        {/*<Route path="/chat/:userId" element={<Chat />}/>*/}
     </Switch>
   );
 }
