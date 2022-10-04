@@ -5,12 +5,12 @@ CloudWave have provided scaffolding for both the front and back end of the chall
 ### Configuration
 This application uses typescript and jest/react-testing-library. `tsconfig.json` has been pre-configured for the environment.
 
-Some files may throw typescript errors due to empty placeholder files.
+**Some files may throw typescript errors due to empty placeholder files or commented out code.**
 
 ### Linting
 There's `stylelint` for linting SCSS files and `eslint` for linting code. You can lint the application with the `lint` and `lint:styles` commands in `package.json`.
 
-Some files may throw linting warnings due to commented out scaffolding code.
+**Some files may throw linting warnings due to commented out scaffolding code.**
 
 ### UI & Components
 We've added `ant design` for you to use, which comes with a selection of UI React components and style classes out of the box.
