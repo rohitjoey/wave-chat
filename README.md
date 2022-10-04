@@ -22,16 +22,7 @@ This challenge uses `react-router-dom` for routing.
 
 
 ### Socket IO
-To connect the client to the backend, you can use the code snippet below.
-
-Read more [here](https://socket.io/).
-
-```js
-const socket = io(
-  config.SOCKET_ENDPOINT,
-  { transports: ['websocket', 'polling', 'flashsocket'] }
-);
-```
+Read more [here](https://socket.io/). The examples on the home page should be enough for you to complete the challenge.
 
 &nbsp;
 ## Back-end
