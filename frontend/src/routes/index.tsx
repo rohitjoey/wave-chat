@@ -11,11 +11,10 @@ const socket = io(
 );
 
 export default function Routes() {
-
   return (
     <Switch>
-        {/*<Route path="/" element={<Home />}/>*/}
-        {/*<Route path="/chat/:userId" element={<Chat />}/>*/}
+        {/*<Route path="/" element={<Home socket={socket} />}/>*/}
+        {/*<Route path="/chat/:userId" element={<Chat socket={socket} />}/>*/}
     </Switch>
   );
 }
