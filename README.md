@@ -17,6 +17,8 @@ We've added `ant design` for you to use, which comes with a selection of UI Reac
 
 Read more [here](https://ant.design/).
 
+Not comfortable with Ant design? Feel free to use native HTML elements.
+
 ### Routing
 This challenge uses `react-router-dom` for routing.
 
