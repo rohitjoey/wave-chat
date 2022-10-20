@@ -1,5 +1,6 @@
 import { Routes as Switch, Route } from 'react-router-dom';
 import { io } from 'socket.io-client';
+import config from '../config';
 
 // Routes
 // import Chat from './Chat';
