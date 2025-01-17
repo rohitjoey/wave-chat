@@ -1,5 +1,5 @@
 {
-  "name": "client_vite",
+  "name": "frontend",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "lint:styles": "stylelint '**/*.scss'",
-    "test": "vitest"
+    "test": "vitest run --globals",
+    "test:watch": "vitest --globals"
   },
   "engines": {
     "node": ">=20.0.0"

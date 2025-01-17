@@ -4,7 +4,7 @@ CloudWave have provided scaffolding for both the front and back end of the chall
 ## Front-end
 
 ### Configuration
-This application uses typescript and jest/react-testing-library. `tsconfig.json` has been pre-configured for the environment.
+This application uses Vite, ReactJS, Typescript and vitest for testing. `tsconfig.json` has been pre-configured for the environment and hot reloading has been set up for you.
 
 ⚠️ **Some files may throw typescript errors due to empty placeholder files or commented out code.**
 
@@ -24,7 +24,7 @@ Not comfortable with Ant design? Feel free to use native HTML elements or anothe
 
 &nbsp;
 ### Routing
-This challenge uses `react-router-dom` for routing.
+This challenge uses `react-router` for routing.
 
 &nbsp;
 ### Socket IO
