@@ -15,3 +15,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.ant-input:focus {
+  border-color: #dc7490ff;
+  outline: 0;
+  box-shadow: none;
+}
+
+.ant-input:hover {
+  border-color: #dc7490ff
+}

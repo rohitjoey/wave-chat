@@ -1,10 +1,9 @@
-import { WechatOutlined } from '@ant-design/icons';
 import type { GetProps } from 'antd';
-import { Button, Flex, Input, Space, Typography } from 'antd';
-import Title from 'antd/es/typography/Title';
+import { Button, Flex, Input, Typography } from 'antd';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Socket } from 'socket.io-client';
+import NavBar from '../../components/Navbar';
 const { Text } = Typography;
 const { Search } = Input;
 type SearchProps = GetProps<typeof Input.Search>;
@@ -33,11 +32,8 @@ export default function Home({ socket }: { socket: Socket }) {
   console.log(socket);
 
   return (
-    <Flex style={{ padding: '20px' }} gap="middle" wrap vertical>
-      <Flex gap="middle" style={{ marginLeft: '40px' }}>
-        <WechatOutlined style={{ fontSize: '40px', color: '#d4728cff' }} />
-        <Title style={{ color: '#d63e66', fontFamily: 'cursive' }}>Wave Chat</Title>
-      </Flex>
+    <>
+      <NavBar />
       <Flex vertical gap="middle" style={{ margin: 'auto', width: '100%', maxWidth: '360px', marginTop: '140px' }}>
         <Search
           placeholder="Enter the connection ID"
@@ -82,6 +78,6 @@ export default function Home({ socket }: { socket: Socket }) {
           Create your connection ID and Chat
         </Button>
       </Flex>
-    </Flex>
+    </>
   );
 }
