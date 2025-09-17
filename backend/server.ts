@@ -19,8 +19,8 @@ io.on('connection', (socket) => {
   socket.on('join-room', ({ room }: { room: string }) => {
     socket.join(room);
     console.log(`User ${socket.id} joined room ${room}`);
-    socket.emit('welcome-message', { message: 'Welcome to the wave chat' }); //to current socket
-    socket.to(room).emit('welcome-message', { message: 'A person has joined the chat' }); //to other socket in the room
+    socket.emit('system-message', { message: 'Welcome to the wave chat' }); //to current socket
+    socket.to(room).emit('system-message', { message: 'A person has joined the chat' }); //to other socket in the room
   });
 
   socket.on('send-message', ({ room, message }: { room: string; message: string }) => {

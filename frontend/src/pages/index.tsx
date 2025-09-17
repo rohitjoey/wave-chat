@@ -16,7 +16,7 @@ export default function Routes() {
       <Flex style={{ padding: '20px' }} gap="middle" wrap vertical>
         <RouterRoutes>
           <Route path="/" element={<Home socket={socket} />} />
-          <Route path="/chat/:userId" element={<Chat socket={socket} />} />
+          <Route path="/chat/:connectionId" element={<Chat socket={socket} />} />
         </RouterRoutes>
       </Flex>
     </BrowserRouter>

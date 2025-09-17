@@ -12,10 +12,7 @@ interface Message {
 }
 
 export default function Chat({ socket }: { socket: Socket }) {
-  console.log(socket.id);
-
-  const { userId } = useParams<{ userId: string }>();
-  console.log(userId);
+  const { connectionId } = useParams<{ connectionId: string }>();
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [copyStatus, setCopyStatus] = useState('');
@@ -31,10 +28,10 @@ export default function Chat({ socket }: { socket: Socket }) {
 
   useEffect(() => {
     socket.emit('join-room', {
-      room: userId
+      room: connectionId
     });
 
-    socket.on('welcome-message', (data: { message: string }) => {
+    socket.on('system-message', (data: { message: string }) => {
       setWelcomeMessage(data.message);
       setTimeout(() => setWelcomeMessage(''), 2000);
     });
@@ -56,8 +53,8 @@ export default function Chat({ socket }: { socket: Socket }) {
     }
     if (e.key === 'Enter') {
       console.log('Enter key pressed!', e.currentTarget.value);
-      socket.emit('send-message', { room: userId, message: text });
 
+      socket.emit('send-message', { room: connectionId, message: text });
       setMessageInput('');
     }
   };
@@ -67,7 +64,7 @@ export default function Chat({ socket }: { socket: Socket }) {
   };
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(userId as string);
+    await navigator.clipboard.writeText(connectionId as string);
     setCopyStatus('Copied!');
     setTimeout(() => setCopyStatus(''), 2000);
   };
@@ -75,9 +72,9 @@ export default function Chat({ socket }: { socket: Socket }) {
     <>
       <NavBar />
 
-      <Flex vertical align='center' style={{marginTop:'0px'}}>
+      <Flex vertical align="center" style={{ marginTop: '0px' }}>
         <Typography.Text style={{ fontFamily: 'cursive' }}>
-          Your room id is <span style={{ fontSize: '30px' }}>{userId}</span>
+          Your connection id is <span style={{ fontSize: '30px' }}>{connectionId}</span>
           <Button style={{ border: 'none', padding: '0' }} onClick={handleCopy}>
             <CopyOutlined />
             {copyStatus && <p>{copyStatus}</p>}
@@ -87,7 +84,7 @@ export default function Chat({ socket }: { socket: Socket }) {
       </Flex>
       <Layout
         style={{
-          height: '80vh',
+          height: '74vh',
           margin: 'auto',
           width: '100%',
           maxWidth: '700px',
@@ -96,31 +93,33 @@ export default function Chat({ socket }: { socket: Socket }) {
         }}
       >
         <Content style={{ padding: '12px 18px 20px', overflowY: 'auto' }} ref={containerRef}>
-          <List
-            dataSource={messages}
-            renderItem={(item) => (
-              <List.Item
-                style={{
-                  borderBottomColor: 'transparent',
-                  display: 'flex',
-                  justifyContent: item.socketId == socket.id ? 'flex-end' : 'flex-start',
-                  padding: '8px 0px 8px 0px'
-                }}
-              >
-                <Typography.Text
+          {messages.length > 0 ? (
+            <List
+              dataSource={messages}
+              renderItem={(item) => (
+                <List.Item
                   style={{
-                    background: item.socketId == socket.id ? '#dc7490ff' : 'white',
-                    padding: '9px',
-                    borderRadius: '18px',
-                    fontFamily: 'cursive',
-                    maxWidth: '400px'
+                    borderBottomColor: 'transparent',
+                    display: 'flex',
+                    justifyContent: item.socketId == socket.id ? 'flex-end' : 'flex-start',
+                    padding: '8px 0px 8px 0px'
                   }}
                 >
-                  {item.message}
-                </Typography.Text>
-              </List.Item>
-            )}
-          />
+                  <Typography.Text
+                    style={{
+                      background: item.socketId == socket.id ? '#dc7490ff' : 'white',
+                      padding: '9px',
+                      borderRadius: '18px',
+                      fontFamily: 'cursive',
+                      maxWidth: '400px'
+                    }}
+                  >
+                    {item.message}
+                  </Typography.Text>
+                </List.Item>
+              )}
+            />
+          ) : null}
         </Content>
         <Footer style={{ textAlign: 'center' }}>
           <Input
